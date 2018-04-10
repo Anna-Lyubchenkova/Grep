@@ -1,7 +1,5 @@
 package main;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class grepParser {
@@ -15,7 +13,6 @@ public class grepParser {
         String fileName = null;
         String word = null;
         for (String elem:string) {
-            System.out.println(elem);
             switch (elem) {
                 case "grep":
                     grep = true;
