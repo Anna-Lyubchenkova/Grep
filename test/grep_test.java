@@ -19,7 +19,9 @@ public class grep_test {
         assertEquals(exp, grep.rRegex(("blabla")));
         List<String> exp1 = new ArrayList<>();
         exp1.add("fhfhg");
-        exp1.add("eirfsf");
+        exp1.add("ERrfsf");
+        exp1.add("ME-BLabla car");
+        grep.thisIgnoreCase(false);
         assertEquals(exp1, grep.vRegex("blabla"));
     }
 }
