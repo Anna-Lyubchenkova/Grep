@@ -19,7 +19,8 @@ public class grep {
         }
 
     }
-    public List<String> searchInString(String regex, int key) {
+
+    private List<String> searchInString(String regex, boolean invert) {
         List<String> result = new ArrayList<>();
         if(ignoreCase){
             regex = regex.toLowerCase();
@@ -30,7 +31,7 @@ public class grep {
             if(ignoreCase){
                 testString=testString.toLowerCase();
             }
-            if((p.matcher(testString).find()&& key==1)||(!p.matcher(testString).find()&& key==2)){
+            if (p.matcher(testString).find() != invert) {
                 result.add(testString);
             }
         }
@@ -38,10 +39,10 @@ public class grep {
         return result;
     }
     public List<String> rRegex(String regex){
-        return searchInString(regex,1);
+        return searchInString(regex, false);
     }
     public List<String> vRegex(String regex){
-        return searchInString(regex,2);
+        return searchInString(regex, true);
     }
     public void thisIgnoreCase(boolean ignoreCase){
         this.ignoreCase = ignoreCase;
