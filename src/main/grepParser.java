@@ -1,11 +1,8 @@
 package main;
 
-import java.util.Scanner;
 
 public class grepParser {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        boolean grep = false;
         boolean vRegex = false;
         boolean rRegex = false;
         boolean ignoreCase = false;
@@ -39,11 +36,8 @@ public class grepParser {
             word = "\\Q" + word + "\\E";
         }
         try {
-            grep g = new grep(fileName);
+            grep g = new grep(fileName, ignoreCase);
             if (word != null) {
-                if (ignoreCase) {
-                    g.thisIgnoreCase(ignoreCase);
-                }
                 if (vRegex) {
                     System.out.println(g.vRegex(word));
                 } else

@@ -10,11 +10,11 @@ public class grep {
     private List<String> string;
     private boolean ignoreCase;
 
-    public grep(String path){
+    public grep(String path, boolean ignoreCase) {
+        this.ignoreCase = ignoreCase;
         try {
             this.string = Files.readAllLines(Paths.get(path));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
 
@@ -22,14 +22,14 @@ public class grep {
 
     private List<String> searchInString(String regex, boolean invert) {
         List<String> result = new ArrayList<>();
-        if(ignoreCase){
+        if (ignoreCase) {
             regex = regex.toLowerCase();
         }
         Pattern p = Pattern.compile(regex);
-        for(String strings : string){
+        for (String strings : string) {
             String testString = strings;
-            if(ignoreCase){
-                testString=testString.toLowerCase();
+            if (ignoreCase) {
+                testString = testString.toLowerCase();
             }
             if (p.matcher(testString).find() != invert) {
                 result.add(testString);
@@ -38,14 +38,13 @@ public class grep {
 
         return result;
     }
-    public List<String> rRegex(String regex){
+
+    public List<String> rRegex(String regex) {
         return searchInString(regex, false);
     }
-    public List<String> vRegex(String regex){
+
+    public List<String> vRegex(String regex) {
         return searchInString(regex, true);
-    }
-    public void thisIgnoreCase(boolean ignoreCase){
-        this.ignoreCase = ignoreCase;
     }
 
 }
