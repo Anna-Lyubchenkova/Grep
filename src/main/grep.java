@@ -17,25 +17,21 @@ public class grep {
         } catch (Exception e) {
             throw new IllegalArgumentException(e.getMessage());
         }
-
     }
 
     private List<String> searchInString(String regex, boolean invert) {
         List<String> result = new ArrayList<>();
-        if (ignoreCase) {
-            regex = regex.toLowerCase();
-        }
-        Pattern p = Pattern.compile(regex);
+        Pattern p;
+        if (ignoreCase)
+            p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+        else
+            p = Pattern.compile(regex);
         for (String strings : string) {
             String testString = strings;
-            if (ignoreCase) {
-                testString = testString.toLowerCase();
-            }
             if (p.matcher(testString).find() != invert) {
                 result.add(testString);
             }
         }
-
         return result;
     }
 

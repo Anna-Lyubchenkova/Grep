@@ -13,7 +13,7 @@ public class grep_test {
         grep grep = new grep("input.txt", true);
         List<String> exp = new ArrayList<>();
         exp.add("blabla car");
-        exp.add("me-blabla car");
+        exp.add("ME-BLabla car");
         assertEquals(exp, grep.rRegex(("(blabla)")));
         assertEquals(exp, grep.rRegex(("blabla")));
         List<String> exp1 = new ArrayList<>();

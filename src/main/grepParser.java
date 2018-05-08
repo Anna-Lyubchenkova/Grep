@@ -1,6 +1,8 @@
 package main;
 
 
+import java.util.List;
+
 public class grepParser {
     public static void main(String[] args) {
         boolean vRegex = false;
@@ -39,15 +41,21 @@ public class grepParser {
             grep g = new grep(fileName, ignoreCase);
             if (word != null) {
                 if (vRegex) {
-                    System.out.println(g.vRegex(word));
+                    printStrings(g.vRegex(word));
                 } else
-                    System.out.println(g.rRegex(word));
+                    printStrings(g.rRegex(word));
             } else {
                 System.out.println("некоректный ввод");
                 System.exit(1);
             }
         } catch (IllegalArgumentException e) {
             System.out.println("некорректный ввод");
+        }
+    }
+
+    static void printStrings(List<String> stringList) {
+        for (String s : stringList) {
+            System.out.println(s);
         }
     }
 }
